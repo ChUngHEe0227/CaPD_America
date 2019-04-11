@@ -44,8 +44,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 //
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.16.0'
 
@@ -54,6 +52,4 @@ dependencies {
     implementation 'com.kakao.sdk:usermgmt:1.16.0'
 
     implementation 'cn.zhouchaoyuan:excelpanel:1.0.5'
-    implementation 'org.junit.jupiter:junit-jupiter-api'
-    implementation 'org.junit.jupiter:junit-jupiter-api'
 }

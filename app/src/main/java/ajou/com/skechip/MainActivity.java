@@ -41,7 +41,6 @@ import java.util.List;
 import ajou.com.skechip.Fragment.EP_Fragment;
 import ajou.com.skechip.R;
 
-import org.junit.*;
 import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 
@@ -75,10 +74,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
-                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
 
         requestMe();
@@ -168,48 +163,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void onclick(View view) {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
-        startActivityForResult(intent, GET_GALLERY_IMAGE);
-    }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if ( requestCode == GET_GALLERY_IMAGE){
-
-            String imagePath = getRealPathFromURI(data.getData());
-            img_input = new Mat();
-            img_output = new Mat();
-
-            loadImage(imagePath, img_input.getNativeObjAddr());
-            getImageprocess_and_showResult();
-
-        }
-    }
-
-    private void imageprocess_and_showResult() {
-
-        imageprocessing(img_input.getNativeObjAddr(), img_output.getNativeObjAddr());
-
-        Bitmap bitmapInput = Bitmap.createBitmap(img_input.cols(), img_input.rows(), Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(img_input, bitmapInput);
-        imageVIewInput.setImageBitmap(bitmapInput);
-
-        Bitmap bitmapOutput = Bitmap.createBitmap(img_output.cols(), img_output.rows(), Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(img_output, bitmapOutput);
-        imageVIewOuput.setImageBitmap(bitmapOutput);
-    }
 
 
-    private String getRealPathFromURI(Uri contentUri) {
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        cursor.moveToFirst();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 
-        return cursor.getString(column_index);
-    }
-    public native void loadImage(String imageFileName, long img);
-    public native void imageprocessing(long inputImage, long outputImage);
+
 }
