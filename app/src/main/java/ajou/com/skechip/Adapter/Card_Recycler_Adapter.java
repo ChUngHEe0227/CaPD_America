@@ -1,6 +1,7 @@
 package ajou.com.skechip.Adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import ajou.com.skechip.Fragment.bean.MyData;
 import ajou.com.skechip.R;
 
 import java.util.ArrayList;
+
+import static android.support.constraint.Constraints.TAG;
 
 public class Card_Recycler_Adapter extends RecyclerView.Adapter<Card_Recycler_Adapter.ViewHolder> {
     private ArrayList<MyData> mDataset;
@@ -43,13 +46,6 @@ public class Card_Recycler_Adapter extends RecyclerView.Adapter<Card_Recycler_Ad
     public Card_Recycler_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_meeting_card, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-        v.findViewById(R.id.cardview).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
