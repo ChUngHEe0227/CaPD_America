@@ -45,6 +45,16 @@ public class TimeTableFragment extends Fragment {
     private List<List<Cell>> cells;
     private SimpleDateFormat weekFormatPattern;
 
+    public static TimeTableFragment newInstance(Bundle bundle) {
+        TimeTableFragment fragment = new TimeTableFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        if(bundle != null){
+            fragment.setArguments(bundle);
+        }
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_excel, container, false);

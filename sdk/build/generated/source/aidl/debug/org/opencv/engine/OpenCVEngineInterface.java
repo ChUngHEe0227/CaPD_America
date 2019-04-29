@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\sdk\\ssss6\\Skechip\\sdk\\java\\src\\org\\opencv\\engine\\OpenCVEngineInterface.aidl
+ * Original file: /Users/jeholee/AndroidStudioProjects/CaPD_America/sdk/java/src/org/opencv/engine/OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**

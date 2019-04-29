@@ -54,6 +54,17 @@ public class PlannerFragment extends Fragment implements ExcelPanel.OnLoadMoreLi
             cells.get(i).addAll(data.get(i));
         }
     }
+
+    public static PlannerFragment newInstance(Bundle bundle) {
+        PlannerFragment fragment = new PlannerFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        if(bundle != null){
+            fragment.setArguments(bundle);
+        }
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
