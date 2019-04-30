@@ -76,7 +76,8 @@ public class EP_Fragment extends Fragment {
             timeTableUploaded = bundle.getBoolean("timeTableUploaded");
         }
 
-
+        //for test
+        timeTableUploaded = false;
 
     }
 
