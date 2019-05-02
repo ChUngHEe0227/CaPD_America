@@ -150,7 +150,14 @@ public class Imgproc {
             COLORMAP_HSV = 9,
             COLORMAP_PINK = 10,
             COLORMAP_HOT = 11,
-            COLORMAP_PARULA = 12;
+            COLORMAP_PARULA = 12,
+            COLORMAP_MAGMA = 13,
+            COLORMAP_INFERNO = 14,
+            COLORMAP_PLASMA = 15,
+            COLORMAP_VIRIDIS = 16,
+            COLORMAP_CIVIDIS = 17,
+            COLORMAP_TWILIGHT = 18,
+            COLORMAP_TWILIGHT_SHIFTED = 19;
 
 
     // C++: enum HistCompMethods

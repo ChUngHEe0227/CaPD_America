@@ -29,12 +29,12 @@ public class Photo {
     public static final int
             INPAINT_NS = 0,
             INPAINT_TELEA = 1,
+            LDR_SIZE = 256,
             NORMAL_CLONE = 1,
             MIXED_CLONE = 2,
             MONOCHROME_TRANSFER = 3,
             RECURS_FILTER = 1,
-            NORMCONV_FILTER = 2,
-            LDR_SIZE = 256;
+            NORMCONV_FILTER = 2;
 
 
     //

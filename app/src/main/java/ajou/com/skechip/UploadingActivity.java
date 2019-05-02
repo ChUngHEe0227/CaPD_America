@@ -53,7 +53,7 @@ public class UploadingActivity extends AppCompatActivity {
                 intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
-
+                Log.e("1","이미지 불러오기 성공");
             }
         });
     }
@@ -69,30 +69,29 @@ public class UploadingActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if ( requestCode == GET_GALLERY_IMAGE){
 
             String imagePath = getRealPathFromURI(data.getData());
             img_input = new Mat();
             img_output = new Mat();
-
             loadImage(imagePath, img_input.getNativeObjAddr());
+            Log.e("1","여기 까지 잘왔어요 뿌욤7");
             imageprocess_and_showResult();
-
+            Log.e("1","여기 까지 잘왔어요 뿌욤2");
         }
     }
 
     private void imageprocess_and_showResult() {
 
-        imageprocessing(img_input.getNativeObjAddr(), img_output.getNativeObjAddr());
-
+        Log.e("1","여기 까지 잘왔어요 뿌욤");
+        //imageprocessing(img_input.getNativeObjAddr(), img_output.getNativeObjAddr());
         Bitmap bitmapInput = Bitmap.createBitmap(img_input.cols(), img_input.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_input, bitmapInput);
         //imageVIewInput.setImageBitmap(bitmapInput);
 
         Bitmap bitmapOutput = Bitmap.createBitmap(img_output.cols(), img_output.rows(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(img_output, bitmapOutput);
-        //imageVIewOuput.setImageBitmap(bitmapOutput);
+        imageVIewOuput.setImageBitmap(bitmapOutput);
     }
     public native void loadImage(String imageFileName, long img);
     public native void imageprocessing(long inputImage, long outputImage);

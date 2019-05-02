@@ -350,6 +350,7 @@ public class Videoio {
             CAP_MSMF = 1400,
             CAP_WINRT = 1410,
             CAP_INTELPERC = 1500,
+            CAP_REALSENSE = 1500,
             CAP_OPENNI2 = 1600,
             CAP_OPENNI2_ASUS = 1610,
             CAP_GPHOTO2 = 1700,
