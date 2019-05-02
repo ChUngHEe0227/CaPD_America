@@ -19,6 +19,7 @@ import android.widget.Button;
 
 import com.kakao.friends.response.model.AppFriendInfo;
 
+import ajou.com.skechip.CalendarActivity;
 import ajou.com.skechip.Fragment.bean.FriendEntity;
 import ajou.com.skechip.R;
 
@@ -36,13 +37,10 @@ public class EP_Fragment extends Fragment {
     private TabLayout tabLayout;
     private Button button;
     private FragmentManager fragmentManager;
-    private boolean cur_type; // true == Table, false == Planner
     private List<ajou.com.skechip.Fragment.TimeTableFragment> t_list = Arrays.asList(new ajou.com.skechip.Fragment.TimeTableFragment(),
             new ajou.com.skechip.Fragment.TimeTableFragment(), new ajou.com.skechip.Fragment.TimeTableFragment(),
             new ajou.com.skechip.Fragment.TimeTableFragment(), new ajou.com.skechip.Fragment.TimeTableFragment(),
             new ajou.com.skechip.Fragment.TimeTableFragment());
-    private List<ajou.com.skechip.Fragment.PlannerFragment> p_list = Arrays.asList(new ajou.com.skechip.Fragment.PlannerFragment());
-
     private List<String> friendsNickname_list = new ArrayList<>();
     private String kakaoUserImg;
     private String kakaoUserName;
@@ -73,11 +71,9 @@ public class EP_Fragment extends Fragment {
             kakaoFriendInfo_list = bundle.getParcelableArrayList("kakaoFriendInfo_list");
             friendsNickname_list = bundle.getStringArrayList("friendsNickname_list");
 
-            timeTableUploaded = bundle.getBoolean("timeTableUploaded");
+//            timeTableUploaded = bundle.getBoolean("timeTableUploaded");
+            timeTableUploaded = true;
         }
-
-
-
     }
 
     @Nullable
@@ -87,20 +83,38 @@ public class EP_Fragment extends Fragment {
 
         if(timeTableUploaded) { // for 정흠
             view = inflater.inflate(R.layout.fragment_time_table, container, false);
-            cur_type = true;
             pager = view.findViewById(R.id.pager);
             tabLayout = view.findViewById(R.id.tab_layout);
-            button = view.findViewById(R.id.reflect);
             fragmentManager = getActivity().getSupportFragmentManager();
+            button = view.findViewById(R.id.reflect);
             button.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    cur_type = false;
-                    pager.setAdapter(new ExcelPagerAdapter(fragmentManager));
-                    tabLayout.setupWithViewPager(pager);
-                    tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
+                    Intent intent = new Intent(getActivity(), CalendarActivity.class);
+                    button.setVisibility(View.GONE);
+                    startActivity(intent);
                 }
             });
+            pager.setAdapter(new ExcelPagerAdapter(fragmentManager));
+            pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+                @Override
+                public void onPageSelected(int i) {
+                    if (i == 0) {
+                        button.setVisibility(View.VISIBLE);
+                    } else {
+                        button.setVisibility(View.GONE);
+                    }
+                }
+                @Override
+                public void onPageScrollStateChanged(int i) {
+                }
+                @Override
+                public void onPageScrolled(int i, float v, int i1) {
+
+                }
+            });
+            tabLayout.setupWithViewPager(pager);
+            tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
             pager.setAdapter(new ExcelPagerAdapter(fragmentManager));
             tabLayout.setupWithViewPager(pager);
             tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
@@ -130,24 +144,13 @@ public class EP_Fragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            Button button = getActivity().findViewById(R.id.reflect);
-            if (cur_type) {
-                if (position == 0) {
-                    button.setVisibility(View.VISIBLE);
-                } else {
-                    button.setVisibility(View.GONE);
-                }
-                return t_list.get(position);
-            } else {
-                button.setVisibility(View.GONE);
-                return p_list.get(position);
-            }
+            return t_list.get(position);
         }
+
 
         @Override
         public int getCount() {
-            if (cur_type) return t_list.size();
-            else return p_list.size();
+            return t_list.size();
         }
 
         @Override
@@ -155,6 +158,5 @@ public class EP_Fragment extends Fragment {
             return "Friend" + position;
         }
     }
-
 
 }
