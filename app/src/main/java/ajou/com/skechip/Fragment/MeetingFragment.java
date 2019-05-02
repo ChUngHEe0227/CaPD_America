@@ -61,11 +61,11 @@ public class MeetingFragment extends Fragment {
             friendsNickname_list = bundle.getStringArrayList("friendsNickname_list");
         }
 
-//        groupEntities.add(new GroupEntity("캡디아메리카", R.drawable.sample1));
-//        groupEntities.add(new GroupEntity("모임모임모임모임모임모임모임", R.drawable.sample));
-//        groupEntities.add(new GroupEntity("1111", R.drawable.sample));
-//        groupEntities.add(new GroupEntity("2222", R.drawable.sample));
-//        groupEntities.add(new GroupEntity("3333", R.drawable.sample));
+        groupEntities.add(new GroupEntity("캡디아메리카", R.drawable.sample1));
+        groupEntities.add(new GroupEntity("모임모임모임모임모임모임모임", R.drawable.sample));
+        groupEntities.add(new GroupEntity("1111", R.drawable.sample));
+        groupEntities.add(new GroupEntity("2222", R.drawable.sample));
+        groupEntities.add(new GroupEntity("3333", R.drawable.sample));
     }
 
     @Override
