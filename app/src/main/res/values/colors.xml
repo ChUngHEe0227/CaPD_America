@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="normal_cell_bg">#FEFFFE</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#FF666666</color>
+    <color name="red">#AF0000</color>
     <color name="bg_line">#E7E7E7</color>
     <color name="text_dark1">#333333</color>
     <color name="text_dark2">#666666</color>
@@ -16,6 +19,10 @@
     <color name="Subject5">#3F51B5</color>
     <color name="Subject6">#F44336</color>
     <color name="Subject7">#f9266f</color>
+    <color name="Subject8">#0A5C10</color>
+    <color name="Subject9">#E29305</color>
+    <color name="Subject10">#8BC34A</color>
+
     <color name="bg_color">#FF99DCD7</color>
     <color name="tab_indicator_color">#66aea9</color>
     <color name="tab_text_color">#74c6c0</color>

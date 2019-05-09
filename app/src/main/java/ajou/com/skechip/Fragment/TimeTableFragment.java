@@ -31,12 +31,12 @@ import cn.zhouchaoyuan.excelpanel.ExcelPanel;
 public class TimeTableFragment extends Fragment {
 
     public static final String WEEK_FORMAT_PATTERN = "EEEE";
-    public static final String[] CHANNEL = {"팔달325","팔달409","성호310","팔달410","팔달309","팔달409"};
-    public static final String[] NAME = {"인공지능", "정보보호", "이산수학", "확률통계", "캡디","컴파일러"};
+    public static final String[] PLACE_NAME = {"팔달325","팔달409","성호310","팔달410","팔달309","팔달409"};
+    public static final String[] SUBJECT_NAME = {"인공지능", "정보보호", "이산수학", "확률통계", "캡디","컴파일러"};
     public static final long ONE_DAY = 24 * 3600 * 1000;
-    public static final int PAGE_SIZE = 6;
-    public static final int ROW_SIZE = 11;
-
+    public static final int PAGE_SIZE = 5;
+    public static final int ROW_SIZE = 9;
+    private boolean revise_mode;
     private ExcelPanel excelPanel;
     private ProgressBar progress;
     private EP_CustomAdapter adapter;
@@ -45,23 +45,16 @@ public class TimeTableFragment extends Fragment {
     private List<List<Cell>> cells;
     private SimpleDateFormat weekFormatPattern;
 
-    public static TimeTableFragment newInstance(Bundle bundle) {
-        TimeTableFragment fragment = new TimeTableFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        if(bundle != null){
-            fragment.setArguments(bundle);
-        }
-        return fragment;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_excel, container, false);
+        Bundle bundle = getArguments();
         progress =  root.findViewById(R.id.progress);
         excelPanel =  root.findViewById(R.id.content_container);
         adapter = new EP_CustomAdapter(getActivity(), blockListener);
         excelPanel.setAdapter(adapter);
+//        revise_mode = bundle.getBoolean("revise_mode");
+
         initData();
         return root;
     }
@@ -70,11 +63,19 @@ public class TimeTableFragment extends Fragment {
         @Override
         public void onClick(View view) {
             Cell cell = (Cell) view.getTag();
-            if (cell != null) {
-                Toast.makeText(getActivity(), cell.getBookingName(), Toast.LENGTH_SHORT).show();
+            if(revise_mode) {   //수정중인 모드
+                if (cell.getSubjectName() == null) {
+//                    Toast.makeText(getActivity(), "empty", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+//                    Toast.makeText(getActivity(), cell.getSubjectName(), Toast.LENGTH_SHORT).show();
+
+                }
             }
             else{
-                Toast.makeText(getActivity(), "Friend list: ", Toast.LENGTH_SHORT).show();
+                if(cell.getSubjectName()==null) Toast.makeText(getActivity(), "empty", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getActivity(), cell.getSubjectName(), Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -120,19 +121,16 @@ public class TimeTableFragment extends Fragment {
 
     private List<ColTitle> genColData() {
         List<ColTitle> colTitles = new ArrayList<>();
-        ColTitle tmp = new ColTitle();
         int hour = 9;
         List<String> minute = new ArrayList<String>();
         minute.add(":00");
         minute.add(":30");
-        tmp.setRoomNumber("Z");
-        tmp.setRoomTypeName("7:30~9:00");
-        colTitles.add(tmp);
-        for (int i = 0; i < ROW_SIZE; i++) {
+
+        for (int i = 1; i < ROW_SIZE; i++) {
             ColTitle colTitle = new ColTitle();
-            String c = new Character((char)(i+65)).toString();
+            String c = new Character((char)(i+64)).toString();
             colTitle.setRoomNumber(c);
-            if(i%2==0) {
+            if(i%2==1) {
                 String str= hour+minute.get(0) + "~";
                 hour++;
                 str+=hour+minute.get(1);
@@ -155,26 +153,22 @@ public class TimeTableFragment extends Fragment {
         for(int i=1;i<ROW_SIZE;i++){
             List<Cell> cellList = new ArrayList<>();
             cells.add(cellList);
-            for(int j=1;j<PAGE_SIZE;j++) {
+            for (int j= 0; j < PAGE_SIZE; j++) {
                 Cell cell = new Cell();
                 Random random = new Random();
                 int number = random.nextInt(15);
                 if (number == 1 || number == 2 || number == 3 || number == 4 || number == 5) {
                     cell.setStatus(number);
-                    cell.setChannelName(CHANNEL[number]);
-                    cell.setBookingName(NAME[number]);
-                    Log.e("cells:", "" + NAME[number]);
+                    cell.setPlaceName(PLACE_NAME[number]);
+                    cell.setSubjectName(SUBJECT_NAME[number]);
+//                    Log.e("Cell val:",""+NAME[number]+i+j);
                 } else {
                     cell.setStatus(0);
-                    Log.e("cells:", "ZERO");
+//                    Log.e("Cell val:",""+0);
                 }
                 cellList.add(cell);
             }
         }
-        Bundle bundle= new Bundle();
-
         return cells;
     }
-
-
 }

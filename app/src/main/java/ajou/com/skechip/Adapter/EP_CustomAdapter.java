@@ -51,27 +51,32 @@ public class EP_CustomAdapter extends BaseExcelPanelAdapter <RowTitle, ColTitle,
             viewHolder.channelName.setText("");
             viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
         } else {
-            viewHolder.bookingName.setText(cell.getBookingName());
-            viewHolder.channelName.setText(cell.getChannelName());
-            if (cell.getStatus() == 1) {
+            viewHolder.bookingName.setText(cell.getSubjectName());
+            viewHolder.channelName.setText(cell.getPlaceName());
+            if (cell.getStatus() == 0) {
+                viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject1));
+            } else if (cell.getStatus() == 1) {
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject1));
             } else if (cell.getStatus() == 2) {
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject2));
             } else if(cell.getStatus() == 3){
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject3));
-            }
-            else if(cell.getStatus() == 4){
+            } else if(cell.getStatus() == 4){
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject4));
-            }
-            else if(cell.getStatus() == 5){
+            } else if(cell.getStatus() == 5){
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject5));
-            }
-            else if(cell.getStatus() == 6){
+            } else if(cell.getStatus() == 6){
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject6));
-            }
-            else if(cell.getStatus() == 7){
+            } else if(cell.getStatus() == 7){
                 viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject7));
+            } else if(cell.getStatus() == 8){
+                viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject8));
+            } else if(cell.getStatus() == 9){
+                viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject9));
+            } else if(cell.getStatus() == 10){
+                viewHolder.cellContainer.setBackgroundColor(ContextCompat.getColor(context, R.color.Subject10));
             }
+
         }
     }
 

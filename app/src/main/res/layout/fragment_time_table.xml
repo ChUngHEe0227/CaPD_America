@@ -7,43 +7,72 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
+        android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/bg_color"
-            android:layout_weight="10"
-            app:tabIndicatorColor="@color/tab_indicator_color"
-            app:tabMode="scrollable"
-            app:tabTextColor="@color/white">
-        </android.support.design.widget.TabLayout>
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/setting"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <TextView
+            android:id="@+id/center_desc_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="@color/bg_color"
-            android:text="설정"
-            android:textColor="@color/white" />
+            android:layout_centerInParent="true"
+            android:text="시간표"
+            android:textAlignment="center"
+            android:textColor="@color/text_dark1"
+            android:textSize="18sp" />
 
-    </LinearLayout>
-    <Button
-        android:id="@+id/reflect"
+        <ImageButton
+            android:id="@+id/change_timetable"
+            android:layout_width="wrap_content"
+            android:layout_height="56dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="95dp"
+            android:src="@drawable/ic_plus"
+            android:background="@color/white" />
+
+        <ImageButton
+            android:id="@+id/calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="56dip"
+            android:layout_marginRight="55dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_calendar"
+            android:background="@color/white" />
+
+        <ImageButton
+            android:id="@+id/timetable_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="56dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_setting"
+            android:background="@color/white" />
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="64dip"
-        android:text="내 일정에 반영하기"
-        android:layout_weight="0"/>
+        android:layout_height="50dp"
+        android:layout_weight="10"
+        android:background="@color/bg_color"
+        android:visibility="gone"
+        app:tabIndicatorColor="@color/tab_indicator_color"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/white"></android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="613dp"
-        android:layout_weight="1"></android.support.v4.view.ViewPager>
+        android:layout_weight="1" ></android.support.v4.view.ViewPager>
 
 
 </LinearLayout>

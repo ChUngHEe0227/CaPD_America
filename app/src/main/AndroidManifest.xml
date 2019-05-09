@@ -22,9 +22,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UploadingActivity"></activity>
-        <activity android:name=".GroupDetailActivity" />
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".UploadingActivity"/>
+        <activity android:name=".GroupDetailActivity"/>
+        <activity android:name=".CalendarActivity"/>
         <activity
             android:name=".LauncyActivity"
             android:label="@string/title_activity_launcy">

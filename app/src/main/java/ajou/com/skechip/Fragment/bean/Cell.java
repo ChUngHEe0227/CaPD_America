@@ -10,8 +10,8 @@ package ajou.com.skechip.Fragment.bean;
 public class Cell {
 
     private int status;// 과목
-    private String channelName;//
-    private String bookingName;//
+    private String PlaceName;//
+    private String SubjectName;//
 
     public int getStatus() {
         return status;
@@ -21,20 +21,20 @@ public class Cell {
         this.status = status;
     }
 
-    public String getChannelName() {
-        return channelName;
+    public String getPlaceName() {
+        return PlaceName;
     }
 
-    public void setChannelName(String channelName) {
-        this.channelName = channelName;
+    public void setPlaceName(String PlaceName) {
+        this.PlaceName = PlaceName;
     }
 
-    public String getBookingName() {
-        return bookingName;
+    public String getSubjectName() {
+        return SubjectName;
     }
 
-    public void setBookingName(String bookingName) {
-        this.bookingName = bookingName;
+    public void setSubjectName(String SubjectName) {
+        this.SubjectName =SubjectName;
     }
 
 //    public Cell(Parcel in) {
