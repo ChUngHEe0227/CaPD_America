@@ -26,7 +26,7 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/native-lib.cpp )
+             ${pathPROJECT}/src/main/cpp/native-lib.cpp )
 add_library( lib_opencv SHARED IMPORTED )
 
 set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION ${pathLIBOPENCV_JAVA})

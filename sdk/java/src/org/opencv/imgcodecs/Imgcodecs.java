@@ -33,7 +33,9 @@ public class Imgcodecs {
             IMWRITE_PAM_TUPLETYPE = 128,
             IMWRITE_TIFF_RESUNIT = 256,
             IMWRITE_TIFF_XDPI = 257,
-            IMWRITE_TIFF_YDPI = 258;
+            IMWRITE_TIFF_YDPI = 258,
+            IMWRITE_TIFF_COMPRESSION = 259,
+            IMWRITE_JPEG2000_COMPRESSION_X1000 = 272;
 
 
     // C++: enum ImreadModes

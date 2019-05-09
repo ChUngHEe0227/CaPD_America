@@ -164,41 +164,37 @@ public class Video {
 
 
     //
-    // C++:  double cv::findTransformECC(Mat templateImage, Mat inputImage, Mat& warpMatrix, int motionType = MOTION_AFFINE, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 50, 0.001), Mat inputMask = Mat())
+    // C++:  double cv::computeECC(Mat templateImage, Mat inputImage, Mat inputMask = Mat())
     //
 
-    //javadoc: findTransformECC(templateImage, inputImage, warpMatrix, motionType, criteria, inputMask)
-    public static double findTransformECC(Mat templateImage, Mat inputImage, Mat warpMatrix, int motionType, TermCriteria criteria, Mat inputMask)
+    //javadoc: computeECC(templateImage, inputImage, inputMask)
+    public static double computeECC(Mat templateImage, Mat inputImage, Mat inputMask)
     {
         
-        double retVal = findTransformECC_0(templateImage.nativeObj, inputImage.nativeObj, warpMatrix.nativeObj, motionType, criteria.type, criteria.maxCount, criteria.epsilon, inputMask.nativeObj);
+        double retVal = computeECC_0(templateImage.nativeObj, inputImage.nativeObj, inputMask.nativeObj);
         
         return retVal;
     }
 
-    //javadoc: findTransformECC(templateImage, inputImage, warpMatrix, motionType, criteria)
-    public static double findTransformECC(Mat templateImage, Mat inputImage, Mat warpMatrix, int motionType, TermCriteria criteria)
+    //javadoc: computeECC(templateImage, inputImage)
+    public static double computeECC(Mat templateImage, Mat inputImage)
     {
         
-        double retVal = findTransformECC_1(templateImage.nativeObj, inputImage.nativeObj, warpMatrix.nativeObj, motionType, criteria.type, criteria.maxCount, criteria.epsilon);
+        double retVal = computeECC_1(templateImage.nativeObj, inputImage.nativeObj);
         
         return retVal;
     }
 
-    //javadoc: findTransformECC(templateImage, inputImage, warpMatrix, motionType)
-    public static double findTransformECC(Mat templateImage, Mat inputImage, Mat warpMatrix, int motionType)
-    {
-        
-        double retVal = findTransformECC_2(templateImage.nativeObj, inputImage.nativeObj, warpMatrix.nativeObj, motionType);
-        
-        return retVal;
-    }
 
-    //javadoc: findTransformECC(templateImage, inputImage, warpMatrix)
-    public static double findTransformECC(Mat templateImage, Mat inputImage, Mat warpMatrix)
+    //
+    // C++:  double cv::findTransformECC(Mat templateImage, Mat inputImage, Mat& warpMatrix, int motionType, TermCriteria criteria, Mat inputMask, int gaussFiltSize)
+    //
+
+    //javadoc: findTransformECC(templateImage, inputImage, warpMatrix, motionType, criteria, inputMask, gaussFiltSize)
+    public static double findTransformECC(Mat templateImage, Mat inputImage, Mat warpMatrix, int motionType, TermCriteria criteria, Mat inputMask, int gaussFiltSize)
     {
         
-        double retVal = findTransformECC_3(templateImage.nativeObj, inputImage.nativeObj, warpMatrix.nativeObj);
+        double retVal = findTransformECC_0(templateImage.nativeObj, inputImage.nativeObj, warpMatrix.nativeObj, motionType, criteria.type, criteria.maxCount, criteria.epsilon, inputMask.nativeObj, gaussFiltSize);
         
         return retVal;
     }
@@ -387,11 +383,12 @@ public class Video {
     // C++:  bool cv::writeOpticalFlow(String path, Mat flow)
     private static native boolean writeOpticalFlow_0(String path, long flow_nativeObj);
 
-    // C++:  double cv::findTransformECC(Mat templateImage, Mat inputImage, Mat& warpMatrix, int motionType = MOTION_AFFINE, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 50, 0.001), Mat inputMask = Mat())
-    private static native double findTransformECC_0(long templateImage_nativeObj, long inputImage_nativeObj, long warpMatrix_nativeObj, int motionType, int criteria_type, int criteria_maxCount, double criteria_epsilon, long inputMask_nativeObj);
-    private static native double findTransformECC_1(long templateImage_nativeObj, long inputImage_nativeObj, long warpMatrix_nativeObj, int motionType, int criteria_type, int criteria_maxCount, double criteria_epsilon);
-    private static native double findTransformECC_2(long templateImage_nativeObj, long inputImage_nativeObj, long warpMatrix_nativeObj, int motionType);
-    private static native double findTransformECC_3(long templateImage_nativeObj, long inputImage_nativeObj, long warpMatrix_nativeObj);
+    // C++:  double cv::computeECC(Mat templateImage, Mat inputImage, Mat inputMask = Mat())
+    private static native double computeECC_0(long templateImage_nativeObj, long inputImage_nativeObj, long inputMask_nativeObj);
+    private static native double computeECC_1(long templateImage_nativeObj, long inputImage_nativeObj);
+
+    // C++:  double cv::findTransformECC(Mat templateImage, Mat inputImage, Mat& warpMatrix, int motionType, TermCriteria criteria, Mat inputMask, int gaussFiltSize)
+    private static native double findTransformECC_0(long templateImage_nativeObj, long inputImage_nativeObj, long warpMatrix_nativeObj, int motionType, int criteria_type, int criteria_maxCount, double criteria_epsilon, long inputMask_nativeObj, int gaussFiltSize);
 
     // C++:  int cv::buildOpticalFlowPyramid(Mat img, vector_Mat& pyramid, Size winSize, int maxLevel, bool withDerivatives = true, int pyrBorder = BORDER_REFLECT_101, int derivBorder = BORDER_CONSTANT, bool tryReuseInputImage = true)
     private static native int buildOpticalFlowPyramid_0(long img_nativeObj, long pyramid_mat_nativeObj, double winSize_width, double winSize_height, int maxLevel, boolean withDerivatives, int pyrBorder, int derivBorder, boolean tryReuseInputImage);
